@@ -5,6 +5,7 @@ export const main = Reach.App(()=>{
     const D = Participant('Admin',{
         price:UInt,
         deadline:UInt,
+        ready: Fun([],Null),
     });
     const A = API('Attendee',{
         iWillGo: Fun([],Bool),
@@ -20,6 +21,7 @@ export const main = Reach.App(()=>{
         const deadline=declassify(interact.deadline);
     });
     D.publish(price,deadline);
+    D.interact.ready();
 
     const RSVPs = new Map(Object({
         came:Bool,
